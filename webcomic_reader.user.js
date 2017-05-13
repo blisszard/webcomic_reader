@@ -2401,7 +2401,7 @@ var paginas = [
 					}
 				},
 		next:	function(html, pos){
-					try{ return selCss('#page_next.btn-view', html); }
+					try{ return selCss('#page_next.btn-view:not([onclick="next_chapter()"])', html); }
 					catch(e){
 						return xpath('//select[@id="bottom_chapter_list"]/option[contains("'+link[pos]+'", @value)]/preceding-sibling::option[1]/@value',
 							pos ? '<div>'+extra[0]+'</div>' : document);
