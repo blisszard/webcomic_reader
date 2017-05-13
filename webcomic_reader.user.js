@@ -5,7 +5,7 @@ var defaultSettings = {
 	prefetchNextStart: 2, //number of prefetched pages ahead when the script starts
 	prefetchBackStart: 1, //number of prefetched pages behind when the script starts
 	prefetchNoNext: true, //specifies if previous page should be prefetched when theres no next page
-	fullLayout: true, //true for full layout mode, false for minimalistic mode
+	fullLayout: false, //true for full layout mode, false for minimalistic mode
 	clickImgNavigates: true, //specifies if clicking the image will change pages
 	clikLeftHalfGoesBack: true, //specifies if clicking the left half of the image will take you to the previous page
 	flipControlsManga: false, //flip the controls (L/R arrows, L/R image click, back/next buttons) for mangas or other right-to-left content
@@ -13,7 +13,7 @@ var defaultSettings = {
 	shrinkWidth: false, //when fit-to-screen enabled and image too wide, shrink it
 	shrinkHeight: false, //when fit-to-screen enabled and image too long, shrink it
 	expandWidth: false, //when fit-to-screen enabled and image too narrow, expand it
-	expandHeight: false, //when fit-to-screen enabled and image too short, expand it
+	expandHeight: true, //when fit-to-screen enabled and image too short, expand it
 	showButtons: true, //show or hide the buttons (back/next, bookmarks, settings, etc...)
 	borderLR: 0, //pixels to leave as border to the sides of the image when zooming and scrolling
 	borderUD: 0, //pixels to leave as border above and below the image when zooming and scrolling
@@ -21,7 +21,7 @@ var defaultSettings = {
 	moveWhileLoading: false, //lets you change pages even if the image for the next page is still loading
 	debugMode: false, //alerts on errors, and shows some of the currently cache'd pages/images with the "," key
 	showSettingsOnFail: false, //if no settings are found for this site and default ones didn't work, show settings screen
-	keyboardShortcuts: { //keyboard shortcuts...
+	keyboardShortcuts: { //keyboard shortcuts...™
 		back: {name: 'LEFT', keyCode: 37, ctrlKey: false, shiftKey: false, altKey: false},
 		next: {name: 'RIGHT', keyCode: 39, ctrlKey: false, shiftKey: false, altKey: false},
 		scroll_left: {name: 'CTRL + LEFT', keyCode: 37, ctrlKey: true, shiftKey: false, altKey: false},
@@ -2401,7 +2401,7 @@ var paginas = [
 					}
 				},
 		next:	function(html, pos){
-					try{ return selCss('#page_next:not([onclick])', html); }
+					try{ return selCss('#page_next.btn-view', html); }
 					catch(e){
 						return xpath('//select[@id="bottom_chapter_list"]/option[contains("'+link[pos]+'", @value)]/preceding-sibling::option[1]/@value',
 							pos ? '<div>'+extra[0]+'</div>' : document);
