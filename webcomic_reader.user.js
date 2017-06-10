@@ -4236,7 +4236,14 @@ var paginas = [
 			}},
 		first:	['//div[@class="page_select"]/select/option[1]/@value'],
 		last:	['//div[@class="page_select"]/select/option[last()]/@value'],
-		js:	function(dir){document.onkeyup = null;},
+		style:	'header { display: none; }\ndiv.plug-right { display: none; }\n.read_img { width:auto; }',
+		js:	function(dir){document.onkeyup = null;
+				var divs = document.querySelectorAll('div.read_img'), i;
+
+				for (i = 0; i < divs.length; ++i) {
+				  divs[i].style.width = "auto";
+				}
+		},
 		scrollx:'R'
 	},
 	{
