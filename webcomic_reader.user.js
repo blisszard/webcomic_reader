@@ -7980,8 +7980,9 @@ function mostrarSettingsZoom(){
 		if(get('wcr_settings')) document.body.removeChild(get('wcr_settings'));
 	}
 }
-
-run_script();
+window.onload = function () { 
+  run_script();
+}
 })();
 
 /*
